@@ -18,6 +18,15 @@ fi
 if [ ! -a ~/.dotfiles/profiles/$profile/.zshrc ]; then
   echo "~/.dotfiles/profiles/$profile/.zshrc not found, quitting..."
 fi
+
+if [ -a ~/.zshrc ]; then
+  timestamp=$(date +%s)
+  mv ~/.zshrc ~/.zshrc_$timestamp.backup
+  echo "~/.zshrc already exists, created backup: ~/.zshrc_$timestamp.backup"
+  echo "To restore, run the following:"
+  echo "  mv ~/.zshrc_$timestamp.backup ~/.zshrc"
+fi 
+
 echo "Copying ~/.dotfiles/profiles/$profile/.zshrc to home directory"
 cp ~/.dotfiles/profiles/$profile/.zshrc ~/.zshrc
 
