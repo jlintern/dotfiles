@@ -56,14 +56,14 @@ echo
 if [ ! -a ~/.dotfiles/profiles/$profile/.tmux.conf ]; then
   if [ -a ~/.tmux.conf ]; then
     timestamp=$(date +%s)
-    mv ~/.tmux.conf ~/tmux.conf.backup_$timestamp
-    echo "~/.tmux.conf already exists, created backup: ~/tmux.conf.backup_$timestamp"
+    mv ~/.tmux.conf ~/.tmux.conf.backup_$timestamp
+    echo "~/.tmux.conf already exists, created backup: ~/.tmux.conf.backup_$timestamp"
     echo "To restore, run the following:"
-    echo "  mv ~/.tmux.conf.backup_$timestamp ~/tmux.conf"
+    echo "  mv ~/.tmux.conf.backup_$timestamp ~/.tmux.conf"
   fi 
 
   echo "Copying ~/.dotfiles/profiles/$profile/.tmux.conf to home directory"
-  cp ~/.dotfiles/profiles/$profile/.tmux.conf ~/tmux.conf
+  cp ~/.dotfiles/profiles/$profile/.tmux.conf ~/.tmux.conf
 fi
 
 echo
