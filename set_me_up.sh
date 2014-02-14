@@ -1,24 +1,23 @@
+
 echo "Cloning public oh-my-zsh repository..."
 git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
 
-echo "Cloning private dotfiles repository..."
-git clone git://github.com/jlintern/dotfiles.git ~/.dotfiles
 
 # if profile was specified on the command line
-if [ -n "$1" ]; then
-  profile=$1
+if [ -n "$2" ]; then
+  profile=$2
 else
   echo "Available profiles:"
   for x in `ls ~/.dotfiles/profiles/`; do echo $x; done
   read -p "Please choose a profile." profile
 fi
 
-if [ ! -d ~/.dotfiles/$profile/ ]
+if [ ! -d ~/.dotfiles/$profile/ ]; then
   echo "~/.dotfiles/$profile/ is not a directory, quitting..."
   exit 1
 fi
 
-if [ ! -a ~/.dotfiles/$profile/.zshrc ]
+if [ ! -a ~/.dotfiles/$profile/.zshrc ]; then
   echo "~/.dotfiles/$profile/.zshrc not found, quitting..."
 fi
 echo "Copying ~/.dotfiles/$profile/.zshrc to home directory"
