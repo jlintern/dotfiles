@@ -8,13 +8,21 @@ else
   popd ~/.oh-my-zsh &> /dev/null
 fi
 
+echo
+# determine what profile to use
+
 # if profile was specified on the command line
 if [ -n "$1" ]; then
   profile=$1
 else
-  echo "Available profiles:"
-  for x in `ls ~/.dotfiles/profiles/`; do echo "  $x"; done
-  read -p "Please choose a profile: " profile
+  if [ -a ~/.dotfiles.profile ]; then
+    profile=$(head -1 ~/.dotfiles.profile)
+    echo "Found ~/.dotfiles.profile, using default profile '$profile'"
+  else
+    echo "No default profile found, none specified on command line. Here are the available profiles:"
+    for x in `ls ~/.dotfiles/profiles/`; do echo "  $x"; done
+    read -p "Please choose a profile: " profile
+  fi
 fi
 
 if [ ! -d ~/.dotfiles/profiles/$profile/ ]; then
@@ -22,39 +30,56 @@ if [ ! -d ~/.dotfiles/profiles/$profile/ ]; then
   exit 1
 fi
 
-if [ ! -a ~/.dotfiles/profiles/$profile/.zshrc ]; then
-  echo "~/.dotfiles/profiles/$profile/.zshrc not found, quitting..."
+echo 
+# save profile as default for next time
+
+echo $profile > ~/.dotfiles.profile
+
+echo
+# .zshrc
+
+if [ -a ~/.dotfiles/profiles/$profile/.zshrc ]; then
+  if [ -a ~/.zshrc ]; then
+    timestamp=$(date +%s)
+    mv ~/.zshrc ~/.zshrc.backup_$timestamp
+    echo "~/.zshrc already exists, created backup: ~/.zshrc.backup_$timestamp"
+    echo "To restore, run the following:"
+    echo "  mv ~/.zshrc.backup_$timestamp ~/.zshrc"
+  fi 
+
+  echo "Copying ~/.dotfiles/profiles/$profile/.zshrc to home directory"
+  cp ~/.dotfiles/profiles/$profile/.zshrc ~/.zshrc
 fi
 
-if [ -a ~/.zshrc ]; then
-  timestamp=$(date +%s)
-  mv ~/.zshrc ~/.zshrc.backup_$timestamp
-  echo "~/.zshrc already exists, created backup: ~/.zshrc.backup_$timestamp"
-  echo "To restore, run the following:"
-  echo "  mv ~/.zshrc.backup_$timestamp ~/.zshrc"
-fi 
+echo
+# tmux.conf
 
-echo "Copying ~/.dotfiles/profiles/$profile/.zshrc to home directory"
-cp ~/.dotfiles/profiles/$profile/.zshrc ~/.zshrc
-
+#TODO: refactor into function, combined with block above
 if [ ! -a ~/.dotfiles/profiles/$profile/tmux.conf ]; then
-  echo "~/.dotfiles/profiles/$profile/tmux.conf not found, quitting..."
+  if [ -a ~/tmux.conf ]; then
+    timestamp=$(date +%s)
+    mv ~/tmux.conf ~/tmux.conf.backup_$timestamp
+    echo "~/tmux.conf already exists, created backup: ~/tmux.conf.backup_$timestamp"
+    echo "To restore, run the following:"
+    echo "  mv ~/tmux.conf.backup_$timestamp ~/tmux.conf"
+  fi 
+
+  echo "Copying ~/.dotfiles/profiles/$profile/tmux.conf to home directory"
+  cp ~/.dotfiles/profiles/$profile/tmux.conf ~/tmux.conf
 fi
 
-if [ -a ~/tmux.conf ]; then
-  timestamp=$(date +%s)
-  mv ~/tmux.conf ~/tmux.conf.backup_$timestamp
-  echo "~/tmux.conf already exists, created backup: ~/tmux.conf.backup"
-  echo "To restore, run the following:"
-  echo "  mv ~/tmux_$timestamp.conf.backup ~/tmux.conf"
-fi 
+echo
+# changing shell if necessary
 
-echo "Copying ~/.dotfiles/profiles/$profile/tmux.conf to home directory"
-cp ~/.dotfiles/profiles/$profile/tmux.conf ~/tmux.conf
-
-if [ -n $ZSH_NAME ]; then
-  echo "Changing shell to /bin/zsh"
-  chsh -s /bin/zsh
+if [ $SHELL == '/bin/zsh' ]; then
+  echo "\$SHELL is already '/bin/zsh', not calling chsh..."
 else
-  echo "\$ZSH_NAME is already set, assuming that default shell is already zsh"
+  echo "\$SHELL is currently $SHELL, running chsh -s /bin/zsh"
+  chsh -s /bin/zsh
 fi
+
+echo
+# print success message
+
+echo "Setup completed successfully"
+
