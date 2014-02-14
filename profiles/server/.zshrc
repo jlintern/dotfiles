@@ -45,7 +45,7 @@ ZSH_THEME="gentoo"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git screen fasd gradle vi-mode warp)
+plugins=(git screen fasd gradle warp)
 
 source $ZSH/oh-my-zsh.sh
 
