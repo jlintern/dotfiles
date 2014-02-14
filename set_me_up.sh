@@ -30,9 +30,7 @@ if [ ! -d ~/.dotfiles/profiles/$profile/ ]; then
   exit 1
 fi
 
-echo 
 # save profile as default for next time
-
 echo $profile > ~/.dotfiles.profile
 
 echo
