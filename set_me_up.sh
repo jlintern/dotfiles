@@ -1,13 +1,20 @@
-echo "Cloning public oh-my-zsh repository..."
-git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+if [ ! -d ~/.dotfiles/profiles/$profile/ ]; then
+  echo "Cloning public oh-my-zsh repository..."
+  git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+else
+  echo "oh-my-zsh repository already exists, pulling latest changes..."
+  pushd ~/.oh-my-zsh &> /dev/null
+  git pull
+  popd ~/.oh-my-zsh &> /dev/null
+fi
 
 # if profile was specified on the command line
 if [ -n "$2" ]; then
   profile=$2
 else
   echo "Available profiles:"
-  for x in `ls ~/.dotfiles/profiles/`; do echo $x; done
-  read -p "Please choose a profile." profile
+  for x in `ls ~/.dotfiles/profiles/`; do echo "  $x"; done
+  read -p "Please choose a profile: " profile
 fi
 
 if [ ! -d ~/.dotfiles/profiles/$profile/ ]; then
