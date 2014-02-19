@@ -54,12 +54,12 @@ source $ZSH/oh-my-zsh.sh
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 # export MANPATH="/usr/local/man:$MANPATH"
 
-# # Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
+# Preferred editor for local and remote sessions
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='vim'
+else
+  export EDITOR='mvim'
+fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -70,7 +70,9 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 alias ez="$EDITOR ~/.zshrc; source ~/.zshrc; echo Consider running ~/push_dotfiles.sh"
 function ca {
   echo "# autoadded on $(date +"%Y/%m/%d %H:%M")\nalias $1=\"$2\"" >> ~/.zshrc
-  sourcd ~/.zshrc
+  source ~/.zshrc
   which $1
   echo "Consider running ~/push_dotfiles.sh"
 }
+# autoadded on 2014/02/19 23:23
+alias sdf="pull_dotfiles.sh"
