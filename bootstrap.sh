@@ -1,3 +1,5 @@
+#!/bin/zsh
+
 #if host was specified on the command line
 if [ -n "$1" ]; then
   host=$1
