@@ -70,17 +70,19 @@ echo profile=$profile >> ~/.dotfiles.config
 echo
 #generating convenience scripts
 
+mkdir -p ~/bin
+
 echo "Generating ~/push_dotfiles.sh"
 sed "/dotfiles_substitution: define_repo_dir/ c\\
 repo_dir=~/.dotfiles\\
 " ~/.dotfiles/push_dotfiles.sh > ~/push_dotfiles.sh
-chmod +x ~/push_dotfiles.sh
+chmod +x ~/bin/push_dotfiles.sh
 
 echo "Generating ~/pull_dotfiles.sh"
 sed "/dotfiles_substitution: define_repo_dir/ c\\
 repo_dir=~/.dotfiles\\
 " ~/.dotfiles/push_dotfiles.sh > ~/pull_dotfiles.sh
-chmod +x ~/pull_dotfiles.sh
+chmod +x ~/bin/pull_dotfiles.sh
 
 echo
 # print success message
