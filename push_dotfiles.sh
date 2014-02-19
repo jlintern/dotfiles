@@ -4,5 +4,8 @@
 
 ### dotfiles_substitution: define_repo_dir ###
 pushd $repo_dir
+git commit -a
+git pull --rebase
 git push
+./set_me_up.sh
 popd
