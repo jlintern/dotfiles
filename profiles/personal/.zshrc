@@ -66,3 +66,11 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
+
+alias ez="$EDITOR ~/.zshrc; source ~/.zshrc; echo Consider running ~/push_dotfiles.sh"
+function ca {
+  echo "# autoadded on $(date +"%Y/%m/%d %H:%M")\nalias $1=\"$2\"" >> ~/.zshrc
+  sourcd ~/.zshrc
+  which $1
+  echo "Consider running ~/push_dotfiles.sh"
+}
