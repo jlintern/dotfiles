@@ -75,4 +75,4 @@ function ca {
   echo "Consider running ~/push_dotfiles.sh"
 }
 # autoadded on 2014/02/19 23:23
-alias sdf="pull_dotfiles.sh"
+alias sdf="pull_dotfiles.sh; source ~/.zshrc"
