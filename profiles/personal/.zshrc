@@ -62,12 +62,12 @@ export EDITOR='vim'
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
-alias ez="$EDITOR ~/.zshrc; source ~/.zshrc; echo Consider running ~/push_dotfiles.sh"
+alias ez="$EDITOR ~/.zshrc; source ~/.zshrc; echo Consider running \`sdf\`"
 function ca {
-  echo "# autoadded on $(date +"%Y/%m/%d %H:%M")\nalias $1=\"$2\"" >> ~/.zshrc
+  echo "# added by 'ca' on $(date +"%Y-%m-%d %H:%M")\nalias $1=\"$2\"" >> ~/.zshrc
   source ~/.zshrc
   which $1
-  echo "Consider running ~/push_dotfiles.sh"
+  echo "Consider running \`sdf\`"
 }
-# autoadded on 2014/02/19 23:23
+# added by 'ca' on 2014-02-19 23:23
 alias sdf="pull_dotfiles.sh; source ~/.zshrc"
