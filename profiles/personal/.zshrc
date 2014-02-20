@@ -62,12 +62,34 @@ export EDITOR='vim'
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
-alias ez="$EDITOR ~/.zshrc; source ~/.zshrc; echo Consider running \`sdf\`"
+# see http://mah.everybody.org/docs/ssh
+SSH_ENV="$HOME/.ssh/environment"
+function start_agent {
+  echo "Initialising new SSH agent..."
+  /usr/bin/ssh-agent | sed 's/^echo/#echo/' > "${SSH_ENV}"
+  echo succeeded
+  chmod 600 "${SSH_ENV}"
+  . "${SSH_ENV}" > /dev/null
+  /usr/bin/ssh-add;
+}
+# Source SSH settings, if applicable
+  if [ -f "${SSH_ENV}" ]; then
+  . "${SSH_ENV}" > /dev/null
+  #ps ${SSH_AGENT_PID} doesn't work under cywgin
+  ps -ef | grep ${SSH_AGENT_PID} | grep ssh-agent$ > /dev/null || {
+    start_agent;
+  }
+else
+  start_agent;
+fi
+
+alias ez="$EDITOR ~/.zshrc; source ~/.zshrc; echo Consider running 'sdf'"
 function ca {
   echo "# added by 'ca' on $(date +"%Y-%m-%d %H:%M")\nalias $1=\"$2\"" >> ~/.zshrc
   source ~/.zshrc
   which $1
-  echo "Consider running \`sdf\`"
+  echo "Consider running 'sdf'"
 }
 # added by 'ca' on 2014-02-19 23:23
 alias sdf="pull_dotfiles.sh; source ~/.zshrc"
+
