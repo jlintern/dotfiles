@@ -4,6 +4,7 @@
 
 ### dotfiles_substitution: define_repo_dir ###
 pushd $repo_dir
+git stash
 git pull --rebase
 ./set_me_up.sh
 popd
