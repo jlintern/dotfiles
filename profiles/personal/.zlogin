@@ -1,1 +1,1 @@
-bash /home/bin/pull_dotfiles.sh
+bash $HOME/bin/pull_dotfiles.sh
