@@ -1,4 +1,5 @@
 * auto-update on login?
+** this is hacked in via .zlogin, not sure what would happen if the git pull wasn't successful
 * git config
 * vimrc
 * base configuration that can be appended to by profiles (hierarchy?)

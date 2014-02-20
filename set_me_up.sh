@@ -33,16 +33,16 @@ else
   popd ~/.oh-my-zsh &> /dev/null
 fi
 
-echo
-# .zshrc
-
 if [ -a ~/.dotfiles/profiles/$profile/.zshrc ]; then
   echo "Linking ~/.dotfiles/profiles/$profile/.zshrc to home directory"
   ln -f ~/.dotfiles/profiles/$profile/.zshrc ~/.zshrc
 fi
 
-echo
-# .tmux.conf
+#TODO: refactor into function, combined with block above
+if [ -a ~/.dotfiles/profiles/$profile/.zlogin ]; then
+  echo "Linking ~/.dotfiles/profiles/$profile/.zlogin to home directory"
+  ln -f ~/.dotfiles/profiles/$profile/.zlogin ~/.zlogin
+fi
 
 #TODO: refactor into function, combined with block above
 if [ ! -a ~/.dotfiles/profiles/$profile/.tmux.conf ]; then
