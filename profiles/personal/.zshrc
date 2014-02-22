@@ -92,4 +92,5 @@ function ca {
 }
 # added by 'ca' on 2014-02-19 23:23
 alias sdf="pull_dotfiles.sh; source ~/.zshrc"
-
+# added by 'ca' on 2014-02-21 19:43
+alias fu="echo eff you too!"
