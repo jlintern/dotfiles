@@ -18,3 +18,10 @@ inoremap <C-j> <Esc>:m+<CR>==gi
 inoremap <C-k> <Esc>:m-2<CR>==gi
 vnoremap <C-j> :m'>+<CR>gv=gv
 vnoremap <C-k> :m-2<CR>gv=gv
+
+" removes "(A) " and inserts "x <current date>" at start of line -- for todo.txt
+let @d = ':s/^(A) //eIx =strftime("%Y-%m-%d") '
+" removes "x <current date>" and inserts "(A) " at start of line -- for todo.txt
+let @a = ':s/^x ....-..-.. //eI(A) '
+" removes "x <current date>" and "(A) " at start of line -- for todo.txt
+let @r = ':s/^x ....-..-.. //e:s/^(A) //e'
