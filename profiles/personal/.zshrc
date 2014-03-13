@@ -96,3 +96,5 @@ function gtd {
 # added by 'ca' on 2014-02-19 23:23
 alias sdf="pull_dotfiles.sh; source ~/.zshrc"
 
+# added by 'ca' on 2014-03-13 15:58
+alias etd="vim /Users/jlintern/Dropbox/todo.txt/todo.txt"
