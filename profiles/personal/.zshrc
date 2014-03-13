@@ -90,7 +90,9 @@ function ca {
   which $1
   echo "Consider running 'sdf'"
 }
+function gtd {
+  grep $1 /Users/jlintern/Dropbox/todo.txt/todo.txt
+}
 # added by 'ca' on 2014-02-19 23:23
 alias sdf="pull_dotfiles.sh; source ~/.zshrc"
-# added by 'ca' on 2014-02-21 19:43
-alias fu="echo eff you too!"
+
