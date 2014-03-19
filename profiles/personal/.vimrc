@@ -28,4 +28,4 @@ let @a = ':s/^x ....-..-.. //eI(A) '
 " removes "x <current date>" and "(A) " at start of line -- for todo.txt
 let @r = ':s/^x ....-..-.. //e:s/^(A) //e'
 " moves lines matching "x <date>" to top of file
-let @s = ':v/^x ....-..-.. /normal ddGp'
+let @s = ':v/^x ....-..-.. /normal ddGpgg'

@@ -83,6 +83,23 @@ else
   start_agent;
 fi
 
+function gri {
+  if [ "$1" ];
+  then
+    grep -ri $1 .;
+  else
+    echo "no argument to gri";
+  fi
+}
+function gril {
+  if [ "$1" ];
+  then
+    grep -ril $1 .;
+  else
+    echo "no argument to gri";
+  fi
+}
+
 alias ez="$EDITOR ~/.zshrc; source ~/.zshrc; echo Consider running 'sdf'"
 function ca {
   echo "# added by 'ca' on $(date +"%Y-%m-%d %H:%M")\nalias $1=\"$2\"" >> ~/.zshrc
