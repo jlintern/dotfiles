@@ -1,0 +1,7 @@
+[user]
+	name = James Lintern
+	email = jameslintern@gmail.com
+[push]
+	default = simple
+[alias]
+	lol = log --graph --decorate --pretty=oneline --abbrev-commit --all

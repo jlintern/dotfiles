@@ -37,6 +37,7 @@ ln -vf ~/.dotfiles/profiles/$profile/.zshrc ~/.zshrc
 ln -vf ~/.dotfiles/profiles/$profile/.zlogin ~/.zlogin
 ln -vf ~/.dotfiles/profiles/$profile/.tmux.conf ~/.tmux.conf
 ln -vf ~/.dotfiles/profiles/$profile/.vimrc ~/.vimrc
+ln -vf ~/.dotfiles/profiles/$profile/.gitconfig ~/.gitconfig
 
 echo
 # changing shell if necessary
