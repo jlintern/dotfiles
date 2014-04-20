@@ -119,5 +119,3 @@ alias atd="grep '^x ....-..-..' /Users/jlintern/Dropbox/todo.txt/todo.txt | tee 
 alias etd="vim /Users/jlintern/Dropbox/todo.txt/todo.txt"
 # added by 'ca' on 2014-04-10 16:45
 alias gw="./gradlew"
-
-PATH=$PATH:/opt/chef/bin # Add chef to path
