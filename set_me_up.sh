@@ -1,21 +1,19 @@
 #!/bin/bash
 
-if [ -a ~/.dotfiles.config ]; then
-  source ~/.dotfiles.config
-fi
 
 # if profile was specified on the command line
 if [ -n "$1" ]; then
   profile=$1
-  if [ -n "$profile" ]; then
+  echo "Using profile '$profile' as specified on command line"
+else
+  if [ -e ~/.dotfiles.config ]; then
+    source ~/.dotfiles.config
+    echo "Using profile '$profile' as specified in ~/.dotfiles.config"
+  else
     echo "No profile specified. Here are the available profiles:"
     for x in `ls ~/.dotfiles/profiles/`; do echo "  $x"; done
     read -p "Please choose a profile: " profile
-  else
-    echo "Using profile '$profile' as specified on command line"
   fi
-else
-  echo "Using profile '$profile' as specified in ~/.dotfiles.config"
 fi
 
 if [ ! -d ~/.dotfiles/profiles/$profile/ ]; then
@@ -23,7 +21,7 @@ if [ ! -d ~/.dotfiles/profiles/$profile/ ]; then
   exit 1
 fi
 
-if [ ! -d ~/.dotfiles/profiles/$profile/ ]; then
+if [ ! -d ~/.oh-my-zsh ]; then
   echo "Cloning public oh-my-zsh repository..."
   git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
 else
