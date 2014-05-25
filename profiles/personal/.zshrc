@@ -114,7 +114,7 @@ function gtd {
 alias sdf="pull_dotfiles.sh; source ~/.zshrc"
 
 # added by 'ca' on 2014-03-13 16:31
-alias atd="grep '^x ....-..-..' /Users/jlintern/Dropbox/todo.txt/todo.txt | tee /tmp/archived_todos >> /Users/jlintern/Dropbox/todo.txt/done.txt; sed -i '' '/x ....-..-../d' todo.txt; echo 'Archived the following items:'; cat /tmp/archived_todos"
+alias atd="grep '^x ....-..-..' /Users/jlintern/Dropbox/todo.txt/todo.txt | tee /tmp/archived_todos >> /Users/jlintern/Dropbox/todo.txt/done.txt; sed -i '' '/x ....-..-../d' /Users/jlintern/Dropbox/todo.txt/todo.txt; echo 'Archived the following items:'; cat /tmp/archived_todos"
 # added by 'ca' on 2014-03-13 15:58
 alias etd="vim /Users/jlintern/Dropbox/todo.txt/todo.txt"
 # added by 'ca' on 2014-04-10 16:45
