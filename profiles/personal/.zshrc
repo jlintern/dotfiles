@@ -120,3 +120,5 @@ alias etd="vim /Users/jlintern/Dropbox/todo.txt/todo.txt"
 alias eatd="vim /Users/jlintern/Dropbox/todo.txt/done.txt"
 # added by 'ca' on 2014-04-10 16:45
 alias gw="./gradlew"
+# added by 'ca' on 2014-07-26 14:42
+alias fn="find . -name"
