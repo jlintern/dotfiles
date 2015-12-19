@@ -124,3 +124,4 @@ alias gw="./gradlew"
 alias fn="find . -name"
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+export GOPATH="$HOME/Dev/go"
