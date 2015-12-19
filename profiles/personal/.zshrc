@@ -127,4 +127,4 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 # Define GOPATH and add to PATH
 export GOPATH="$HOME/Dev/go"
-export PATH="$PATH:$GOPATH" 
+export PATH="$PATH:$GOPATH/bin" 
